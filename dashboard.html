@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo - Punch Card</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Librería de Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <header>
+    <span>Usuario: <strong id="user-email">Cargando...</strong></span>
+    <button onclick="logout()" class="btn-small">Cerrar Sesión</button>
+  </header>
+
+  <main class="container">
+    <h2>Tu Tarjeta de Sellos</h2>
+    <p>Haz clic en cualquier casilla para marcar/desmarcar un sello:</p>
+
+    <!-- Punch Card con 6 casillas -->
+    <div class="punch-card">
+      <div class="slot" onclick="toggleStamp(this)">1</div>
+      <div class="slot" onclick="toggleStamp(this)">2</div>
+      <div class="slot" onclick="toggleStamp(this)">3</div>
+      <div class="slot" onclick="toggleStamp(this)">4</div>
+      <div class="slot" onclick="toggleStamp(this)">5</div>
+      <div class="slot" onclick="toggleStamp(this)">6</div>
+    </div>
+  </main>
+
+  <script>
+    // ⚠️ REEMPLAZA CON TUS DATOS DE SUPABASE
+    const SUPABASE_URL = 'https://jlhzxnfwazgaynlmwuaj.supabase.co/rest/v1/';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpsaHp4bmZ3YXpnYXlubG13dWFqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk1NzkyMzgsImV4cCI6MjEwNTE1NTIzOH0.FssVyTalBQDh_veaBl5xQoZUwos2BqCRuqRyt7j9k10';
+    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    // Verificar que el usuario inició sesión
+    async function checkAuth() {
+      const { data: { session } } = await _supabase.auth.getSession();
+      if (!session) {
+        window.location.href = 'index.html';
+      } else {
+        document.getElementById('user-email').innerText = session.user.email;
+      }
+    }
+    checkAuth();
+
+    // Función para poner/quitar el sello
+    function toggleStamp(element) {
+      element.classList.toggle('stamped');
+    }
+
+    // Función de Cerrar Sesión
+    async function logout() {
+      await _supabase.auth.signOut();
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>
