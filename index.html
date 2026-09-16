@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acceso - Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Librería de Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Bienvenido a la Demo</h2>
+    
+    <div class="form-group">
+      <label>Correo electrónico:</label>
+      <input type="email" id="email" placeholder="tu@correo.com">
+    </div>
+
+    <div class="form-group">
+      <label>Contraseña:</label>
+      <input type="password" id="password" placeholder="••••••••">
+    </div>
+
+    <div class="buttons">
+      <button onclick="login()">Iniciar Sesión</button>
+      <button onclick="register()" class="btn-secondary">Registrarse</button>
+    </div>
+
+    <p id="message" class="message"></p>
+  </div>
+
+  <script>
+    // ⚠️ REEMPLAZA CON TUS DATOS DE SUPABASE
+    const SUPABASE_URL = 'https://jlhzxnfwazgaynlmwuaj.supabase.co/rest/v1/';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpsaHp4bmZ3YXpnYXlubG13dWFqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk1NzkyMzgsImV4cCI6MjEwNTE1NTIzOH0.FssVyTalBQDh_veaBl5xQoZUwos2BqCRuqRyt7j9k10';
+    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    // Verificar si ya hay una sesión activa
+    async function checkUser() {
+      const { data: { session } } = await _supabase.auth.getSession();
+      if (session) {
+        window.location.href = 'dashboard.html';
+      }
+    }
+    checkUser();
+
+    // Función de Iniciar Sesión
+    async function login() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const message = document.getElementById('message');
+
+      message.innerText = 'Cargando...';
+
+      const { data, error } = await _supabase.auth.signInWithPassword({ email, password });
+
+      if (error) {
+        message.innerText = 'Error: ' + error.message;
+      } else {
+        window.location.href = 'dashboard.html';
+      }
+    }
+
+    // Función de Registro
+    async function register() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const message = document.getElementById('message');
+
+      message.innerText = 'Creando cuenta...';
+
+      const { data, error } = await _supabase.auth.signUp({ email, password });
+
+      if (error) {
+        message.innerText = 'Error: ' + error.message;
+      } else {
+        message.innerText = '¡Cuenta creada con éxito! Haz clic en Iniciar Sesión.';
+      }
+    }
+  </script>
+</body>
+</html>
