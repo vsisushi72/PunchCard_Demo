@@ -66,6 +66,10 @@ body {
     background: transparent;
     box-shadow: none;
   }
+ 
+  body.dashboard-page h2 {
+    display: none;
+  }
 }
  
 .menu-toggle {
@@ -238,6 +242,13 @@ button:hover {
  
 .slot:hover {
   transform: scale(1.05);
+}
+ 
+.premios-img {
+  display: block;
+  width: 70%;
+  max-width: 260px;
+  margin: 8px auto 0;
 }
  
 /* Estado cuando tiene el SELLO */
