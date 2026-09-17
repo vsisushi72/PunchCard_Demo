@@ -71,6 +71,7 @@ body {
  
 @media (max-width: 768px) {
   body.dashboard-page {
+    background-color: #ffffff;
     background-image: url('assets/bg-dashboard-mobile.jpg');
     background-repeat: no-repeat;
     background-position: top center;
