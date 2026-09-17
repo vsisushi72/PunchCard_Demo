@@ -40,18 +40,22 @@ header {
 .input-group {
   display: flex;
   align-items: center;
-  gap: 10px;
-  border-bottom: 2px solid #000;
-  padding: 10px 4px;
-  margin-bottom: 20px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  padding-left: 14%;
+  margin-bottom: 25px;
   text-align: left;
 }
  
-.icon {
-  width: 22px;
-  height: 22px;
-  fill: #000;
-  flex-shrink: 0;
+.input-group.email {
+  background-image: url('assets/user-field.png');
+  aspect-ratio: 3526 / 579;
+}
+ 
+.input-group.password {
+  background-image: url('assets/password-field.png');
+  aspect-ratio: 3526 / 587;
 }
  
 input {
