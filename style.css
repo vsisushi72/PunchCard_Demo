@@ -31,10 +31,10 @@ header {
   margin-bottom: 30px;
 }
  
-.logo h1 {
-  margin: 0;
-  font-size: 28px;
-  letter-spacing: 1px;
+.logo img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
  
 .input-group {
