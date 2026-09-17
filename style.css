@@ -99,50 +99,43 @@ button:hover {
  
 /* ESTILOS DE LA PUNCH CARD */
 .punch-card {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
   margin-top: 20px;
 }
  
 .slot {
-  height: 80px;
-  border: 2px dashed #bbb;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  color: #aaa;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-image: url('assets/slot-circle.png');
+  background-size: cover;
+  background-position: center;
   cursor: pointer;
   user-select: none;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease;
   position: relative;
 }
  
 .slot:hover {
-  border-color: #0070f3;
-  color: #0070f3;
+  transform: scale(1.05);
 }
  
 /* Estado cuando tiene el SELLO */
-.slot.stamped {
-  border-style: solid;
-  border-color: #e63946;
-  background-color: #ffe6e6;
-  color: transparent; /* Oculta el número */
-}
- 
-/* Icono o marca del sello */
 .slot.stamped::after {
-  content: "💮"; /* Puedes cambiar este emoji por el sello/imagen que quieras */
-  font-size: 36px;
+  content: "";
   position: absolute;
-  transform: scale(1.2) rotate(-10deg);
+  inset: 0;
+  background-image: url('assets/stamp.png');
+  background-size: 75%;
+  background-position: center;
+  background-repeat: no-repeat;
   animation: stamp-anim 0.2s ease-out;
 }
  
 @keyframes stamp-anim {
-  0% { transform: scale(3) rotate(0deg); opacity: 0; }
-  100% { transform: scale(1.2) rotate(-10deg); opacity: 1; }
+  0% { transform: scale(1.8) rotate(0deg); opacity: 0; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
 }
