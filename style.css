@@ -8,6 +8,17 @@ body {
   padding: 20px;
 }
  
+@media (max-width: 768px) {
+  body.login-page {
+    background-image: url('assets/bg-mobile.jpg');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 100% auto;
+    min-height: calc(100vw * 6451 / 3312);
+    padding-top: 60px;
+  }
+}
+ 
 header {
   width: 100%;
   max-width: 400px;
