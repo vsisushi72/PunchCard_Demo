@@ -17,6 +17,39 @@ body {
     min-height: calc(100vw * 6451 / 3312);
     padding-top: 60px;
   }
+ 
+  body.login-page .container {
+    max-width: 280px;
+    padding: 16px;
+  }
+ 
+  body.login-page .logo {
+    margin-bottom: 18px;
+  }
+ 
+  body.login-page .logo img {
+    width: 50%;
+  }
+ 
+  body.login-page .input-group {
+    margin-bottom: 15px;
+    padding: 6px 0 6px 38px;
+    background-size: 26px auto;
+  }
+ 
+  body.login-page .input-group input {
+    font-size: 14px;
+  }
+ 
+  body.login-page .buttons {
+    gap: 8px;
+    margin-top: 10px;
+  }
+ 
+  body.login-page button {
+    padding: 10px;
+    font-size: 14px;
+  }
 }
  
 header {
