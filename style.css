@@ -52,6 +52,22 @@ body {
   }
 }
  
+@media (max-width: 768px) {
+  body.dashboard-page {
+    background-image: url('assets/bg-dashboard-mobile.jpg');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 100% auto;
+    min-height: calc(100vw * 8000 / 2923);
+    padding-top: 80px;
+  }
+ 
+  body.dashboard-page .container {
+    background: transparent;
+    box-shadow: none;
+  }
+}
+ 
 header {
   width: 100%;
   max-width: 400px;
