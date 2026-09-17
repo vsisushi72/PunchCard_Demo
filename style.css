@@ -70,6 +70,31 @@ body {
   body.dashboard-page h2 {
     display: none;
   }
+ 
+  body.dashboard-page .instructions {
+    display: none;
+  }
+ 
+  .deco-full {
+    display: block;
+  }
+}
+ 
+.deco-full {
+  display: none;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+  pointer-events: none;
+}
+ 
+.deco-top {
+  margin-bottom: -70px;
+}
+ 
+.deco-bottom {
+  margin-top: -30px;
 }
  
 .menu-toggle {
