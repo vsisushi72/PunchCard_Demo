@@ -10,10 +10,18 @@
 </head>
 <body class="dashboard-page">
  
-  <header>
+  <button class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+ 
+  <div class="menu-overlay" id="menu-overlay" onclick="toggleMenu()"></div>
+ 
+  <nav class="side-menu" id="side-menu">
     <span>Usuario: <strong id="user-email">Cargando...</strong></span>
     <button onclick="logout()" class="btn-small">Cerrar Sesión</button>
-  </header>
+  </nav>
  
   <main class="container">
     <h2>Tu Tarjeta de Sellos</h2>
@@ -48,7 +56,19 @@
  
     // Función para poner/quitar el sello
     function toggleStamp(element) {
-      element.classList.toggle('stamped');
+      const stamped = element.classList.toggle('stamped');
+      if (stamped) {
+        const angle = (Math.random() * 50 - 25).toFixed(1);
+        element.style.setProperty('--stamp-rotate', angle + 'deg');
+      } else {
+        element.style.removeProperty('--stamp-rotate');
+      }
+    }
+ 
+    // Función para abrir/cerrar el menú lateral
+    function toggleMenu() {
+      document.getElementById('side-menu').classList.toggle('open');
+      document.getElementById('menu-overlay').classList.toggle('open');
     }
  
     // Función de Cerrar Sesión

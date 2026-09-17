@@ -68,13 +68,66 @@ body {
   }
 }
  
-header {
-  width: 100%;
-  max-width: 400px;
+.menu-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 20;
+  width: 44px;
+  height: 44px;
+  background: #000;
+  border: none;
+  border-radius: 8px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  margin-bottom: 20px;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 0;
+}
+ 
+.menu-toggle span {
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+}
+ 
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 15;
+}
+ 
+.menu-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+ 
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 240px;
+  background: #fff;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.15);
+  padding: 80px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+  z-index: 18;
+}
+ 
+.side-menu.open {
+  transform: translateX(0);
 }
  
 .container {
@@ -196,10 +249,11 @@ button:hover {
   background-size: 75%;
   background-position: center;
   background-repeat: no-repeat;
+  transform: rotate(var(--stamp-rotate, -8deg));
   animation: stamp-anim 0.2s ease-out;
 }
  
 @keyframes stamp-anim {
-  0% { transform: scale(1.8) rotate(0deg); opacity: 0; }
-  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  0% { transform: scale(1.8) rotate(var(--stamp-rotate, -8deg)); opacity: 0; }
+  100% { transform: scale(1) rotate(var(--stamp-rotate, -8deg)); opacity: 1; }
 }
