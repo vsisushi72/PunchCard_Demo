@@ -9,34 +9,36 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
-
+ 
   <div class="container">
-    <h2>Bienvenido a la Demo</h2>
-    
-    <div class="form-group">
-      <label>Correo electrónico:</label>
-      <input type="email" id="email" placeholder="tu@correo.com">
+    <div class="logo">
+      <h1>Demo</h1>
     </div>
-
-    <div class="form-group">
-      <label>Contraseña:</label>
-      <input type="password" id="password" placeholder="••••••••">
+ 
+    <div class="input-group">
+      <svg viewBox="0 0 24 24" class="icon"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/></svg>
+      <input type="email" id="email" placeholder="Correo electrónico">
     </div>
-
+ 
+    <div class="input-group">
+      <svg viewBox="0 0 24 24" class="icon"><path d="M17 8V7c0-2.8-2.2-5-5-5S7 4.2 7 7v1c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 7c0-1.7 1.3-3 3-3s3 1.3 3 3v1H9V7zm3 8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
+      <input type="password" id="password" placeholder="Contraseña">
+    </div>
+ 
     <div class="buttons">
-      <button onclick="login()">Iniciar Sesión</button>
-      <button onclick="register()" class="btn-secondary">Registrarse</button>
+      <button onclick="login()">Sign in</button>
+      <button onclick="register()">Sign up</button>
     </div>
-
+ 
     <p id="message" class="message"></p>
   </div>
-
+ 
   <script>
     // ⚠️ REEMPLAZA CON TUS DATOS DE SUPABASE
     const SUPABASE_URL = 'https://jlhzxnfwazgaynlmwuaj.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpsaHp4bmZ3YXpnYXlubG13dWFqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk1NzkyMzgsImV4cCI6MjEwNTE1NTIzOH0.FssVyTalBQDh_veaBl5xQoZUwos2BqCRuqRyt7j9k10';
     const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
+ 
     // Verificar si ya hay una sesión activa
     async function checkUser() {
       const { data: { session } } = await _supabase.auth.getSession();
@@ -45,34 +47,34 @@
       }
     }
     checkUser();
-
+ 
     // Función de Iniciar Sesión
     async function login() {
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
       const message = document.getElementById('message');
-
+ 
       message.innerText = 'Cargando...';
-
+ 
       const { data, error } = await _supabase.auth.signInWithPassword({ email, password });
-
+ 
       if (error) {
         message.innerText = 'Error: ' + error.message;
       } else {
         window.location.href = 'dashboard.html';
       }
     }
-
+ 
     // Función de Registro
     async function register() {
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
       const message = document.getElementById('message');
-
+ 
       message.innerText = 'Creando cuenta...';
-
+ 
       const { data, error } = await _supabase.auth.signUp({ email, password });
-
+ 
       if (error) {
         message.innerText = 'Error: ' + error.message;
       } else {

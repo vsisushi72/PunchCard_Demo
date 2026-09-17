@@ -7,7 +7,7 @@ body {
   margin: 0;
   padding: 20px;
 }
-
+ 
 header {
   width: 100%;
   max-width: 400px;
@@ -16,7 +16,7 @@ header {
   align-items: center;
   margin-bottom: 20px;
 }
-
+ 
 .container {
   background: white;
   padding: 25px;
@@ -26,66 +26,77 @@ header {
   max-width: 380px;
   text-align: center;
 }
-
-.form-group {
-  margin-bottom: 15px;
+ 
+.logo {
+  margin-bottom: 30px;
+}
+ 
+.logo h1 {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+ 
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 2px solid #000;
+  padding: 10px 4px;
+  margin-bottom: 20px;
   text-align: left;
 }
-
-label {
-  display: block;
-  font-size: 14px;
-  margin-bottom: 5px;
+ 
+.icon {
+  width: 22px;
+  height: 22px;
+  fill: #000;
+  flex-shrink: 0;
 }
-
+ 
 input {
   width: 100%;
-  padding: 10px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  padding: 4px 0;
 }
-
+ 
 .buttons {
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  gap: 12px;
   margin-top: 15px;
 }
-
+ 
 button {
-  flex: 1;
-  padding: 10px;
-  background-color: #0070f3;
+  width: 100%;
+  padding: 14px;
+  background-color: #000;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 16px;
   font-weight: bold;
 }
-
+ 
 button:hover {
-  background-color: #0051a8;
+  background-color: #333;
 }
-
-.btn-secondary {
-  background-color: #666;
-}
-
-.btn-secondary:hover {
-  background-color: #444;
-}
-
+ 
 .btn-small {
   padding: 6px 12px;
   font-size: 12px;
 }
-
+ 
 .message {
   margin-top: 15px;
   font-size: 14px;
   color: #d32f2f;
 }
-
+ 
 /* ESTILOS DE LA PUNCH CARD */
 .punch-card {
   display: grid;
@@ -93,7 +104,7 @@ button:hover {
   gap: 15px;
   margin-top: 20px;
 }
-
+ 
 .slot {
   height: 80px;
   border: 2px dashed #bbb;
@@ -108,12 +119,12 @@ button:hover {
   transition: all 0.2s ease;
   position: relative;
 }
-
+ 
 .slot:hover {
   border-color: #0070f3;
   color: #0070f3;
 }
-
+ 
 /* Estado cuando tiene el SELLO */
 .slot.stamped {
   border-style: solid;
@@ -121,7 +132,7 @@ button:hover {
   background-color: #ffe6e6;
   color: transparent; /* Oculta el número */
 }
-
+ 
 /* Icono o marca del sello */
 .slot.stamped::after {
   content: "💮"; /* Puedes cambiar este emoji por el sello/imagen que quieras */
@@ -130,7 +141,7 @@ button:hover {
   transform: scale(1.2) rotate(-10deg);
   animation: stamp-anim 0.2s ease-out;
 }
-
+ 
 @keyframes stamp-anim {
   0% { transform: scale(3) rotate(0deg); opacity: 0; }
   100% { transform: scale(1.2) rotate(-10deg); opacity: 1; }
