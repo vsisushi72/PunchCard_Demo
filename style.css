@@ -76,7 +76,6 @@ body {
     background-repeat: no-repeat;
     background-position: top center;
     background-size: 100% auto;
-    min-height: calc(100vw * 8000 / 2923);
     padding-top: 50vw;
   }
  
